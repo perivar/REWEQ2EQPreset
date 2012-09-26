@@ -1,0 +1,75 @@
+//--------------------------------------
+//--- 010 Editor v4.0.2 Binary Template
+//
+// File: FXPReaEQTempalte.bt : ReaEQ Preset file template
+// Author: Per Ivar Nerseth
+// Revision: 1
+// Purpose: Generate a ReaEQ preset file from Room Eq Wizard eq filters
+//--------------------------------------
+
+typedef enum <int> EQTYPE {
+    LowShelf = 0,
+    HighShelf = 1,
+    Band = 8,
+    LowPass = 3,
+    HighPass = 4,
+    AllPass = 5,
+    Notch = 6,
+    BandPass = 7,
+    Band_alt = 9,
+    Band_alt2 = 2
+} var1;
+
+typedef enum <long> ONOFF {
+    Off = 0,
+    On = 1
+} var2;
+
+typedef enum <byte> LOGSCALEAUTOFREQ {
+    LogOff = 0,
+    LogOn = 1
+} var3;
+
+typedef struct {
+    char chunkMagic[4];     // 'CcnK'
+    long byteSize;          // of this chunk, excl. magic + byteSize
+    char fxMagic[4];        // 'FxCk', 'FxBk', 'FBCh' or 'FPCh'
+
+    long version;
+    char fxID[4];           // fx unique id
+    long fxVersion;
+    long numPrograms;
+    char name[28];
+    long chunkSize;
+} presetHEADER;
+
+string GainComment(double gain) {
+    local double db = 20*(Log(gain)/Log(10));
+    string  sret;
+    SPrintf( sret, "dB: %lf", db );
+    return sret;
+}
+
+typedef struct {
+	EQTYPE Type;                        
+    ONOFF OnOff;
+	double Freq;                        // (value range 20.0 -> 24000.0)
+    double Gain <comment=GainComment>;  // (value range -90.0 (inf) -> 24.0) dB. Store the inverse=10^(dBVal/20)
+	double Q;                           // (value range 0.01 -> 4.00)
+    LOGSCALEAUTOFREQ OnOff;
+} presetCONTENT;
+
+SetBackColor( cLtYellow );
+BigEndian();
+presetHEADER header;
+
+SetBackColor( cLtGray );
+LittleEndian();
+long unknown7;          //
+long numberOfBands;     // Total number of bands
+
+presetCONTENT band[numberOfBands];
+long unknown8;
+long unknown9;
+double MasterGain <comment=GainComment>;  // (value range -90.0 (inf) -> 24.0) dB. Store the inverse=10^(dBVal/20)
+long unknown10;

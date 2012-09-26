@@ -1,0 +1,30 @@
+Filter Settings file
+
+Room EQ V5,01
+Dated: 24.sep.2012 11:38:55
+
+Notes:Genelec Filters Generic
+
+Equaliser: Generic
+sep 22 17:56:50 genele
+Filter  1: ON  PK       Fc    91,9 Hz  Gain  10,4 dB  Q  2,00
+Filter  2: ON  PK       Fc     136 Hz  Gain -17,7 dB  Q 10,43
+Filter  3: ON  PK       Fc     171 Hz  Gain  -9,4 dB  Q  7,56
+Filter  4: ON  PK       Fc     249 Hz  Gain  -6,3 dB  Q 37,00
+Filter  5: ON  PK       Fc    63,8 Hz  Gain  -5,0 dB  Q  8,06
+Filter  6: ON  PK       Fc   1 275 Hz  Gain  -5,4 dB  Q 11,31
+Filter  7: ON  PK       Fc     154 Hz  Gain  14,1 dB  Q 13,38
+Filter  8: ON  PK       Fc     505 Hz  Gain  10,7 dB  Q 34,38
+Filter  9: ON  PK       Fc   1 887 Hz  Gain   7,7 dB  Q 15,78
+Filter 10: ON  PK       Fc   5 123 Hz  Gain  -3,5 dB  Q  6,00
+Filter 11: ON  PK       Fc     389 Hz  Gain  -7,8 dB  Q 33,62
+Filter 12: ON  PK       Fc     735 Hz  Gain  11,7 dB  Q 42,83
+Filter 13: ON  PK       Fc     653 Hz  Gain  -6,0 dB  Q 42,36
+Filter 14: ON  PK       Fc     280 Hz  Gain  -8,9 dB  Q 39,13
+Filter 15: ON  PK       Fc   2 830 Hz  Gain  -4,7 dB  Q 22,73
+Filter 16: ON  PK       Fc     225 Hz  Gain  -5,4 dB  Q 14,96
+Filter 17: ON  PK       Fc   1 066 Hz  Gain  -5,8 dB  Q 22,81
+Filter 18: ON  PK       Fc   2 135 Hz  Gain  -3,6 dB  Q 22,59
+Filter 19: ON  PK       Fc   3 210 Hz  Gain  -3,3 dB  Q 16,57
+Filter 20: ON  PK       Fc     771 Hz  Gain  -4,0 dB  Q 23,54
+

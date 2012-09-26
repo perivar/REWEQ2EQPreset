@@ -1,0 +1,30 @@
+Filter Settings file
+
+Room EQ V5,01
+Dated: 24.sep.2012 11:51:14
+
+Notes:fbq2496
+
+Equaliser: FBQ2496
+sep 22 17:56:50 genele
+Filter  1: ON  PEQ      Fc    64,0 Hz  Gain  -5,0 dB  BW Oct 0,167
+Filter  2: ON  PEQ      Fc    91,4 Hz  Gain  10,5 dB  BW Oct 0,750
+Filter  3: ON  PEQ      Fc     137 Hz  Gain -17,0 dB  BW Oct 0,143
+Filter  4: ON  PEQ      Fc     155 Hz  Gain  14,0 dB  BW Oct 0,111
+Filter  5: ON  PEQ      Fc     170 Hz  Gain  -9,5 dB  BW Oct 0,200
+Filter  6: ON  PEQ      Fc     224 Hz  Gain  -5,5 dB  BW Oct 0,100
+Filter  7: ON  PEQ      Fc     249 Hz  Gain  -6,5 dB  BW Oct 0,033
+Filter  8: ON  PEQ      Fc     279 Hz  Gain  -9,0 dB  BW Oct 0,033
+Filter  9: ON  PEQ      Fc     390 Hz  Gain  -8,0 dB  BW Oct 0,050
+Filter 10: ON  PEQ      Fc     502 Hz  Gain  10,5 dB  BW Oct 0,033
+Filter 11: ON  PEQ      Fc     655 Hz  Gain  -6,0 dB  BW Oct 0,033
+Filter 12: ON  PEQ      Fc     735 Hz  Gain  11,5 dB  BW Oct 0,033
+Filter 13: ON  PEQ      Fc     769 Hz  Gain  -4,0 dB  BW Oct 0,067
+Filter 14: ON  PEQ      Fc   1 062 Hz  Gain  -6,0 dB  BW Oct 0,067
+Filter 15: ON  PEQ      Fc   1 276 Hz  Gain  -5,5 dB  BW Oct 0,125
+Filter 16: ON  PEQ      Fc   1 888 Hz  Gain   7,5 dB  BW Oct 0,083
+Filter 17: ON  PEQ      Fc   2 143 Hz  Gain  -3,5 dB  BW Oct 0,067
+Filter 18: ON  PEQ      Fc   2 825 Hz  Gain  -4,5 dB  BW Oct 0,067
+Filter 19: ON  PEQ      Fc   3 206 Hz  Gain  -3,5 dB  BW Oct 0,083
+Filter 20: ON  PEQ      Fc   5 141 Hz  Gain  -3,5 dB  BW Oct 0,250
+
