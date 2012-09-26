@@ -37,10 +37,15 @@ namespace REWEQ2EQPreset
 				string directoryName = Path.GetDirectoryName(inputFilePath);
 				string fileName = Path.GetFileNameWithoutExtension(inputFilePath);
 				if (fileExtension.Equals(".txt")) {
-					string outputFilePath = directoryName + Path.DirectorySeparatorChar + fileName + ".fxp";
 					REWEQFilters filters = REWEQ.ReadREWEQFiltersFile(inputFilePath);
 					if (filters != null && filters.Count > 0) {
-						ReaEQ.Convert2ReaEQ(filters, outputFilePath);
+						if (radioFabfilterProQ.Checked) {
+							string outputFilePath = directoryName + Path.DirectorySeparatorChar + fileName + ".ffp";
+							FabfilterProQ.Convert2FabfilterProQ(filters, outputFilePath);
+						} else if (radioReaEQ.Checked) {
+							string outputFilePath = directoryName + Path.DirectorySeparatorChar + fileName + ".fxp";
+							ReaEQ.Convert2ReaEQ(filters, outputFilePath);
+						}
 					}
 				}
 			}

@@ -53,6 +53,7 @@
     <Compile Include="..\..\AudioVSTToolbox\CommonUtils\FXP.cs">
       <Link>FXP.cs</Link>
     </Compile>
+    <Compile Include="FabfilterProQ.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>

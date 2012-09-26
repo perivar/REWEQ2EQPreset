@@ -6,7 +6,7 @@ using CommonUtils;
 namespace REWEQ2EQPreset
 {
 	/// <summary>
-	/// ReaEQ Preset Class for saving a ReaEq Preset file
+	/// ReaEQ Preset Class for saving a ReaEq Preset file (fxp)
 	/// </summary>
 	public static class ReaEQ
 	{

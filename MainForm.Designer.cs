@@ -32,8 +32,9 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.eqPlugin = new System.Windows.Forms.RadioButton();
+			this.radioReaEQ = new System.Windows.Forms.RadioButton();
 			this.label3 = new System.Windows.Forms.Label();
+			this.radioFabfilterProQ = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -66,15 +67,15 @@
 			this.pictureBox1.TabIndex = 2;
 			this.pictureBox1.TabStop = false;
 			// 
-			// eqPlugin
+			// radioReaEQ
 			// 
-			this.eqPlugin.Location = new System.Drawing.Point(12, 237);
-			this.eqPlugin.Name = "eqPlugin";
-			this.eqPlugin.Size = new System.Drawing.Size(104, 24);
-			this.eqPlugin.TabIndex = 3;
-			this.eqPlugin.TabStop = true;
-			this.eqPlugin.Text = "ReaEQ";
-			this.eqPlugin.UseVisualStyleBackColor = true;
+			this.radioReaEQ.Location = new System.Drawing.Point(12, 237);
+			this.radioReaEQ.Name = "radioReaEQ";
+			this.radioReaEQ.Size = new System.Drawing.Size(104, 24);
+			this.radioReaEQ.TabIndex = 3;
+			this.radioReaEQ.TabStop = true;
+			this.radioReaEQ.Text = "ReaEQ";
+			this.radioReaEQ.UseVisualStyleBackColor = true;
 			// 
 			// label3
 			// 
@@ -84,13 +85,24 @@
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Choose EQ Plugin:";
 			// 
+			// radioFabfilterProQ
+			// 
+			this.radioFabfilterProQ.Location = new System.Drawing.Point(102, 237);
+			this.radioFabfilterProQ.Name = "radioFabfilterProQ";
+			this.radioFabfilterProQ.Size = new System.Drawing.Size(104, 24);
+			this.radioFabfilterProQ.TabIndex = 5;
+			this.radioFabfilterProQ.TabStop = true;
+			this.radioFabfilterProQ.Text = "FabFilter Pro-Q";
+			this.radioFabfilterProQ.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.Controls.Add(this.radioFabfilterProQ);
 			this.Controls.Add(this.label3);
-			this.Controls.Add(this.eqPlugin);
+			this.Controls.Add(this.radioReaEQ);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
@@ -99,8 +111,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.RadioButton radioFabfilterProQ;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.RadioButton eqPlugin;
+		private System.Windows.Forms.RadioButton radioReaEQ;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
