@@ -14,6 +14,8 @@ namespace REWEQ2EQPreset
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		static string _version = "1.1.0";
+		
 		public MainForm()
 		{
 			//
@@ -21,6 +23,8 @@ namespace REWEQ2EQPreset
 			//
 			InitializeComponent();
 
+			labelVersion.Text = "Version: " + _version;
+			
 			this.AllowDrop = true;
 			this.DragEnter += new DragEventHandler(MainForm_DragEnter);
 			this.DragDrop += new DragEventHandler(MainForm_DragDrop);

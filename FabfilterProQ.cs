@@ -70,17 +70,17 @@ namespace REWEQ2EQPreset
 				}
 			}
 
-			binFile.Write((float) 0);
-			binFile.Write((float) 0);
-			binFile.Write((float) 1);
-			binFile.Write((float) 0);
-			binFile.Write((float) 0);
-			binFile.Write((float) 0);
-			binFile.Write((float) 0);
-			binFile.Write((float) 0);
-			binFile.Write((float) 1);
-			binFile.Write((float) 2);
-			binFile.Write((float) -1);
+			binFile.Write((float) 0); // float output_gain;      // -1 to 1 (- Infinity to +36 dB , 0 = 0 dB)
+			binFile.Write((float) 0); // float output_pan;       // -1 to 1 (0 = middle)
+			binFile.Write((float) 2); // float display_range;    // 0 = 6dB, 1 = 12dB, 2 = 30dB, 3 = 3dB
+			binFile.Write((float) 0); // float process_mode;     // 0 = zero latency, 1 = lin.phase.low - medium - high - maximum
+			binFile.Write((float) 0); // float channel_mode;     // 0 = Left/Right, 1 = Mid/Side
+			binFile.Write((float) 0); // float bypass;           // 0 = No bypass
+			binFile.Write((float) 0); // float receive_midi;     // 0 = Enabled?
+			binFile.Write((float) 3); // float analyzer;         // 0 = Off, 1 = Pre, 2 = Post, 3 = Pre+Post
+			binFile.Write((float) 1); // float analyzer_resolution;  // 0 - 3 : low - medium[x] - high - maximum
+			binFile.Write((float) 2); // float analyzer_speed;   // 0 - 3 : very slow, slow, medium[x], fast
+			binFile.Write((float) -1); // float solo_band;        // -1
 			binFile.Close();
 			
 			return true;

@@ -35,6 +35,7 @@
 			this.radioReaEQ = new System.Windows.Forms.RadioButton();
 			this.label3 = new System.Windows.Forms.Label();
 			this.radioFabfilterProQ = new System.Windows.Forms.RadioButton();
+			this.labelVersion = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -50,36 +51,37 @@
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(61, 158);
+			this.label2.Location = new System.Drawing.Point(56, 160);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(168, 48);
+			this.label2.Size = new System.Drawing.Size(169, 72);
 			this.label2.TabIndex = 1;
-			this.label2.Text = "Use either FBQ2496 or Generic Equaliser format. Remember to export filter as text" +
-			"!";
+			this.label2.Text = "Use either FBQ2496 or Generic (which is the best) Equaliser format. Remember to e" +
+			"xport Filter Settings as text! [perivar@nerseth.com]";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// pictureBox1
 			// 
 			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(93, 7);
+			this.pictureBox1.Location = new System.Drawing.Point(93, 12);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(100, 96);
+			this.pictureBox1.Size = new System.Drawing.Size(101, 101);
 			this.pictureBox1.TabIndex = 2;
 			this.pictureBox1.TabStop = false;
 			// 
 			// radioReaEQ
 			// 
-			this.radioReaEQ.Location = new System.Drawing.Point(12, 237);
+			this.radioReaEQ.Location = new System.Drawing.Point(11, 250);
+			this.radioReaEQ.Margin = new System.Windows.Forms.Padding(2);
 			this.radioReaEQ.Name = "radioReaEQ";
-			this.radioReaEQ.Size = new System.Drawing.Size(104, 24);
+			this.radioReaEQ.Size = new System.Drawing.Size(100, 20);
 			this.radioReaEQ.TabIndex = 3;
 			this.radioReaEQ.TabStop = true;
-			this.radioReaEQ.Text = "ReaEQ";
+			this.radioReaEQ.Text = "ReaEQ (Free)";
 			this.radioReaEQ.UseVisualStyleBackColor = true;
 			// 
 			// label3
 			// 
-			this.label3.Location = new System.Drawing.Point(12, 224);
+			this.label3.Location = new System.Drawing.Point(11, 237);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(100, 19);
 			this.label3.TabIndex = 4;
@@ -87,23 +89,34 @@
 			// 
 			// radioFabfilterProQ
 			// 
-			this.radioFabfilterProQ.Location = new System.Drawing.Point(102, 237);
+			this.radioFabfilterProQ.Location = new System.Drawing.Point(115, 250);
+			this.radioFabfilterProQ.Margin = new System.Windows.Forms.Padding(2);
 			this.radioFabfilterProQ.Name = "radioFabfilterProQ";
-			this.radioFabfilterProQ.Size = new System.Drawing.Size(104, 24);
+			this.radioFabfilterProQ.Size = new System.Drawing.Size(161, 20);
 			this.radioFabfilterProQ.TabIndex = 5;
 			this.radioFabfilterProQ.TabStop = true;
-			this.radioFabfilterProQ.Text = "FabFilter Pro-Q";
+			this.radioFabfilterProQ.Text = "FabFilter Pro-Q (Commercial)";
 			this.radioFabfilterProQ.UseVisualStyleBackColor = true;
+			// 
+			// labelVersion
+			// 
+			this.labelVersion.Location = new System.Drawing.Point(2, 2);
+			this.labelVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.labelVersion.Name = "labelVersion";
+			this.labelVersion.Size = new System.Drawing.Size(274, 15);
+			this.labelVersion.TabIndex = 5;
+			this.labelVersion.Text = "Version: ";
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.ClientSize = new System.Drawing.Size(282, 276);
 			this.Controls.Add(this.radioFabfilterProQ);
-			this.Controls.Add(this.label3);
 			this.Controls.Add(this.radioReaEQ);
+			this.Controls.Add(this.labelVersion);
 			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Name = "MainForm";
@@ -112,6 +125,7 @@
 			this.ResumeLayout(false);
 		}
 		private System.Windows.Forms.RadioButton radioFabfilterProQ;
+		private System.Windows.Forms.Label labelVersion;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.RadioButton radioReaEQ;
 		private System.Windows.Forms.PictureBox pictureBox1;
