@@ -1,0 +1,72 @@
+//--------------------------------------
+//--- 010 Editor v4.0.2 Binary Template
+//
+// File: FabfilterProQTemplate.bt
+// Author: Per Ivar Nerseth
+// Revision: 1
+// Purpose: Read and Write Fabfilter Pro-Q preset files (FFP)
+//--------------------------------------
+
+typedef enum <uint> EQSHAPE {
+    Bell        = 0x00000000,   // 0 (default)
+    LowShelf    = 0x3F800000,   // 1 
+    LowCut      = 0x40000000,   // 2,
+    HighShelf   = 0x40400000,   // 3,
+    HighCut     = 0x40800000,   // 4,
+    Notch       = 0x40A00000    // 5
+} var1;
+
+typedef enum <uint> LP_HP_SLOPE {
+    _6dB_oct     = 0x00000000,   // 0
+    _12dB_oct    = 0x3F800000,   // 1 
+    _24dB_oct    = 0x40000000,   // 2, (default)
+    _48dB_oct    = 0x40400000    // 3,
+} var2;
+
+typedef enum <uint> STEREO_PLACEMENT {
+    Left        = 0x00000000,   // 0
+    Right       = 0x3F800000,   // 1 
+    Stereo      = 0x40000000,   // 2, (default)
+} var3;
+
+string FrequencyComment(double frequency) {
+    local double freq = Pow(2, frequency);
+    string  sret;
+    SPrintf( sret, "%lf Hz", freq );
+    return sret;
+}
+
+string QComment(double q) {
+    local double qBandwidth = Pow(10, ((q-0.5)/0.312098175));
+    string  sret;
+    SPrintf( sret, "%lf", qBandwidth );
+    return sret;
+}
+
+typedef struct {
+    float frequency <comment=FrequencyComment>; // =LOG(A1)/LOG(2) (default = 1000 Hz)
+    float gain;                         // actual gain in dB
+    float q <comment=QComment>;         // =LOG(F1)*0,312098175+0,5 (default = 1)
+    EQSHAPE shape;                      // 0 - 5
+    LP_HP_SLOPE lp_hp_slope;            // 0 = 6 dB/oct, 1 = 12 dB/oct, 2 = 24 dB/oct, 3 = 48 dB/oct
+    STEREO_PLACEMENT stereo_placement;  // 0 = Left, 1 = Right, 2 = Stereo
+    float enabled;                      // 0 = Disabled
+} eqBand;
+
+char fx[4];
+int unknown2;
+int unknown3;
+float active_bands;
+eqBand band[24];
+
+float output_gain;      // -1 to 1 (- Infinity to +36 dB , 0 = 0 dB)
+float output_pan;       // -1 to 1 (0 = middle)
+float display_range;    // 0 = 6dB, 1 = 12dB, 2 = 30dB, 3 = 3dB
+float process_mode;     // 0 = zero latency, 1 = lin.phase.low - medium - high - maximum 
+float channel_mode;     // 0 = Left/Right, 1 = Mid/Side
+float bypass;           // No bypass
+float receive_midi;     // 0 = Enabled?
+float analyzer;         // 0 = Off, 1 = Pre, 2 = Post, 3 = Pre+Post
+float analyzer_resolution;  // 0 - 3 : low - medium[x] - high - maximum 
+float analyzer_speed;   // 0 - 3 : very slow, slow, medium[x], fast
+float solo_band;        // -1
