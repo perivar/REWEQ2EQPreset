@@ -53,9 +53,10 @@ typedef struct {
     float enabled;                      // 0 = Disabled
 } eqBand;
 
-char fx[4];
-int unknown2;
-int unknown3;
+LittleEndian();
+char fxID[4];
+int version;
+int numParams;
 float active_bands;
 eqBand band[24];
 
