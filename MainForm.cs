@@ -14,7 +14,7 @@ namespace REWEQ2EQPreset
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		static string _version = "1.1.1";
+		static string _version = "1.1.2";
 		
 		public MainForm()
 		{
