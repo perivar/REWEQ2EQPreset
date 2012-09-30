@@ -45,14 +45,14 @@ namespace REWEQ2EQPreset
 			
 			// store to file
 			FXP fxp = new FXP();
-			fxp.chunkMagic = "CcnK";
-			fxp.byteSize = 0; // will be set correctly by FXP class
-			fxp.fxMagic = "FPCh"; // FPCh = FXP (preset), FBCh = FXB (bank)
-			fxp.version = 1; // Format Version (should be 1)
-			fxp.fxID = "reeq";
-			fxp.fxVersion = 1100;
-			fxp.numPrograms = 1;
-			fxp.name = "";
+			fxp.ChunkMagic = "CcnK";
+			fxp.ByteSize = 0; // will be set correctly by FXP class
+			fxp.FxMagic = "FPCh"; // FPCh = FXP (preset), FBCh = FXB (bank)
+			fxp.Version = 1; // Format Version (should be 1)
+			fxp.FxID = "reeq";
+			fxp.FxVersion = 1100;
+			fxp.ProgramCount = 1;
+			fxp.Name = "";
 			
 			using(MemoryStream memStream = new MemoryStream(10))
 			{
@@ -76,8 +76,8 @@ namespace REWEQ2EQPreset
 				
 				memStream.Flush();
 				byte[] chunkData = memStream.GetBuffer();
-				fxp.chunkSize = chunkData.Length;
-				fxp.chunkDataByteArray = chunkData;
+				fxp.ChunkSize = chunkData.Length;
+				fxp.ChunkDataByteArray = chunkData;
 			}
 			fxp.WriteFile(filePath);
 			return true;
