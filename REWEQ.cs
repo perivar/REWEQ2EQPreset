@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace REWEQ2EQPreset
 {
@@ -61,8 +62,8 @@ namespace REWEQ2EQPreset
 						}
 					}
 					
-					// skip all lines that does not start with "Filter"
-					if (line.StartsWith("Filter")) {
+					// skip all lines that does not start with "Filter <number>:"
+					if (Regex.IsMatch(line, @"^Filter\s+\d+:")) {
 						
 						// remove any non breaking spaces
 						line = Regex.Replace(line, "\xA0", String.Empty);
@@ -97,6 +98,18 @@ namespace REWEQ2EQPreset
 								return null;
 							}
 							filters.EqBands.Add(band);
+						} else {
+							// By some reason we failed parsing the Filter line which should have worked!
+							// probably a locale problem
+							Console.Error.WriteLine("Could not parse line: {0}", line);
+							MessageBox.Show("Failed parsing filter line using Culture: " + CultureInfo.CurrentCulture.DisplayName + ". Does the REW filter file use this Culture? (e.g. '"
+							                + nfi.NumberDecimalSeparator + "' as the Decimal Separator?)" +
+							                "\n\nUnparsable line:\n" +
+							                line,
+							                "Critical Warning!",
+							                MessageBoxButtons.OK,
+							                MessageBoxIcon.Warning);
+							return null;
 						}
 					}
 				}

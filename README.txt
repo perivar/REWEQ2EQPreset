@@ -1,14 +1,16 @@
 Room EQ Wizard EQ Filter to VST EQ Plugin Preset Converter README
 =================================================================
-Per Ivar Nerseth, 2012
+Per Ivar Nerseth, 2013
 perivar@nerseth.com
 
 A very detailed description of the process can be seen here: 
 http://www.youtube.com/watch?v=Fa9qlB6LK4c
 Created by Dozerbeatz (dozerbeatz@gmail.com)
 
-The only exception from the above video is that I don't use apQualizr but eiter ReaEQ (free) or FabFilter Pro-Q (commercial) EQ plugin.
+The only exception from the above video is that I don't use apQualizr but either ReaEQ (free) or FabFilter Pro-Q (commercial) EQ plugin.
 
+ReaEQ Url: http://www.reaper.fm/reaplugs/
+Pro-Q Url: http://www.fabfilter.com/products/pro-q-equalizer-plug-in
 
 A short summary of the process is:
 
@@ -51,6 +53,7 @@ This will create an inverse eq filter which will be the basis for our VST EQ Plu
 9. Choose Export: "Filter Settings as Text" and store the txt file a place you remember
 
 10. Run the "REW2EQPreset" tool and select the EQ plugin of choice to generate a preset for, e.g. "FabFilter Pro-Q"
+Note! The tool tries to detect the current regional settings and use the correct decimal seperator.
 
 If using FabFilter Pro-Q then the generated preset file (*.ffp) must be copied to the FabFilter EQ directory for the plugin to find it. On my computer this is "Documents\FabFilter\Pro-Q"
 
