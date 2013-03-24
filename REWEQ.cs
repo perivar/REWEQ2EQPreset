@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace REWEQ2EQPreset
 {
@@ -10,10 +11,25 @@ namespace REWEQ2EQPreset
 	/// </summary>
 	public static class REWEQ
 	{
-		private static Regex digitsAndCommasOnly = new Regex(@"[^\d,]");
-		
+		/// <summary>
+		/// Parse a REW filters output file
+		/// The users regional locale is also taken into consideration
+		/// </summary>
+		/// <param name="filePath">path to file</param>
+		/// <returns>a rew eq filter object</returns>
 		public static REWEQFilters ReadREWEQFiltersFile(string filePath) {
+			
 			REWEQFilters filters = new REWEQFilters();
+			
+			// Get current culture's NumberFormatInfo object.
+			NumberFormatInfo nfi = CultureInfo.CurrentCulture.NumberFormat;
+			//NumberFormatInfo nfi = CultureInfo.InvariantCulture.NumberFormat; // For debugging
+
+			// Assign needed property values to variables.
+			string decimalSeparator = nfi.NumberDecimalSeparator;
+			
+			// Form regular expression pattern using the current culture's decimal seperator.
+			Regex digitsAndDecimalSeparatorOnly = new Regex(@"[^\d" + Regex.Escape(decimalSeparator) + "]");
 			
 			using (StreamReader r = new StreamReader(filePath))
 			{
@@ -27,11 +43,17 @@ namespace REWEQ2EQPreset
 						// find out what filter parse rule to use
 						if (line.Equals("Equaliser: FBQ2496")) {
 							// Filter  1: ON  PEQ      Fc    64,0 Hz  Gain  -5,0 dB  BW Oct 0,167
-							regexpPattern = @"^Filter\s+\d+:\s(\w+)\s+(\w+)\s+Fc ([\D\d,]+) Hz  Gain ([\s\d,\-]+) dB  BW Oct ([\s\d,]+)$";
+							regexpPattern = @"^Filter\s+\d+:\s(\w+)\s+(\w+)\s+Fc ([\D\d" +
+								Regex.Escape(decimalSeparator) + @"]+) Hz  Gain ([\s\d" +
+								Regex.Escape(decimalSeparator) + @"\-]+) dB  BW Oct ([\s\d" +
+								Regex.Escape(decimalSeparator) + @"]+)$";
 							usingBWOct = true;
 						} else if(line.Equals("Equaliser: Generic")) {
 							// Filter  1: ON  PK       Fc    63,8 Hz  Gain  -5,0 dB  Q  8,06
-							regexpPattern = @"^Filter\s+\d+:\s(\w+)\s+(\w+)\s+Fc ([\D\d,]+) Hz  Gain ([\s\d,\-]+) dB  Q ([\s\d,]+)$";
+							regexpPattern = @"^Filter\s+\d+:\s(\w+)\s+(\w+)\s+Fc ([\D\d" +
+								Regex.Escape(decimalSeparator) + @"]+) Hz  Gain ([\s\d" +
+								Regex.Escape(decimalSeparator) + @"\-]+) dB  Q ([\s\d" +
+								Regex.Escape(decimalSeparator) + @"]+)$";
 							usingBWOct = false;
 						} else {
 							Console.Error.WriteLine("No known equaliser format!", line);
@@ -52,7 +74,7 @@ namespace REWEQ2EQPreset
 							string enabled = match.Groups[1].Value.Trim();
 							string type = match.Groups[2].Value.Trim();
 							string freq = match.Groups[3].Value.Trim();
-							freq = digitsAndCommasOnly.Replace(freq, "");
+							freq = digitsAndDecimalSeparatorOnly.Replace(freq, "");
 							string gain = match.Groups[4].Value.Trim();
 							string q = match.Groups[5].Value.Trim();
 							
@@ -60,14 +82,14 @@ namespace REWEQ2EQPreset
 							if (enabled.Equals("ON")) band.Enabled = true;
 							if (type.Equals("PEQ") || type.Equals("PK")) band.FilterType = REWEQFilterType.PK;
 							try {
-								band.FilterFreq = Double.Parse(freq);
-								band.FilterGain = Double.Parse(gain);
+								band.FilterFreq = Double.Parse(freq, nfi);
+								band.FilterGain = Double.Parse(gain, nfi);
 								
 								if (usingBWOct) {
-									band.FilterBWOct = Double.Parse(q);
+									band.FilterBWOct = Double.Parse(q, nfi);
 									band.FilterQ = BWOct2Q(band.FilterBWOct);
 								} else {
-									band.FilterQ = Double.Parse(q);
+									band.FilterQ = Double.Parse(q, nfi);
 									band.FilterBWOct = Q2BWOct(band.FilterQ);
 								}
 							} catch (Exception e) {
