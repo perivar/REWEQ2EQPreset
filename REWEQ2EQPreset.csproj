@@ -63,13 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\AudioVSTToolbox\CommonUtils\BinaryFile.cs">
-      <Link>BinaryFile.cs</Link>
-    </Compile>
-    <Compile Include="..\..\AudioVSTToolbox\CommonUtils\FXP.cs">
-      <Link>FXP.cs</Link>
-    </Compile>
+    <Compile Include="BinaryFile.cs" />
     <Compile Include="FabfilterProQ.cs" />
+    <Compile Include="FXP.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
