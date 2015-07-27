@@ -64,11 +64,14 @@ namespace REWEQ2EQPreset
 					
 					// skip all lines that does not start with "Filter <number>:"
 					if (Regex.IsMatch(line, @"^Filter\s+\d+:")) {
-						
+
 						// remove any non breaking spaces
 						line = Regex.Replace(line, "\xA0", String.Empty);
-						
-						Match match = Regex.Match(line, regexpPattern);
+
+                        // skip line if filter type is "None"
+                        if(Regex.Match(line, @"^Filter\s+\d+:\s+ON\s+None.*$").Success) continue;
+
+                        Match match = Regex.Match(line, regexpPattern);
 						if (match.Success) {
 							filterCount++;
 							
