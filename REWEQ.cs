@@ -105,7 +105,8 @@ namespace REWEQ2EQPreset
 							// By some reason we failed parsing the Filter line which should have worked!
 							// probably a locale problem
 							Console.Error.WriteLine("Could not parse line: {0}", line);
-							MessageBox.Show("Failed parsing filter line using Culture: " + CultureInfo.CurrentCulture.DisplayName + ". Does the REW filter file use this Culture? (e.g. '"
+							MessageBox.Show(new Form() { WindowState = FormWindowState.Maximized, TopMost = true },
+							                "Failed parsing filter line using Culture: " + CultureInfo.CurrentCulture.DisplayName + ". Does the REW filter file use this Culture? (e.g. '"
 							                + nfi.NumberDecimalSeparator + "' as the Decimal Separator?)" +
 							                "\n\nUnparsable line:\n" +
 							                line,

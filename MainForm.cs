@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace REWEQ2EQPreset
 {
@@ -41,15 +42,58 @@ namespace REWEQ2EQPreset
 				string directoryName = Path.GetDirectoryName(inputFilePath);
 				string fileName = Path.GetFileNameWithoutExtension(inputFilePath);
 				if (fileExtension.Equals(".txt")) {
+					Boolean success = false;
+					
 					REWEQFilters filters = REWEQ.ReadREWEQFiltersFile(inputFilePath);
 					if (filters != null && filters.Count > 0) {
-						if (radioFabfilterProQ.Checked) {
-							string outputFilePath = directoryName + Path.DirectorySeparatorChar + fileName + ".ffp";
-							FabfilterProQ.Convert2FabfilterProQ(filters, outputFilePath);
-						} else if (radioReaEQ.Checked) {
-							string outputFilePath = directoryName + Path.DirectorySeparatorChar + fileName + ".fxp";
-							ReaEQ.Convert2ReaEQ(filters, outputFilePath);
+						string outputFilePath = directoryName + Path.DirectorySeparatorChar + fileName;
+						
+						switch(listBoxPluginSelection.SelectedIndex) {
+							// I added some asserts to ensure switch cases corresponds to the right plugin
+							case  0: // ReaEQ
+								Debug.Assert(listBoxPluginSelection.SelectedItem.ToString().ToLower().Contains("reaeq"));
+								outputFilePath += ".fxp";
+								success = ReaEQ.Convert2ReaEQ(filters, outputFilePath);
+								break;
+							case  1: // EasyQ
+								Debug.Assert(listBoxPluginSelection.SelectedItem.ToString().ToLower().Contains("easyq"));
+								outputFilePath += ".xml";
+								// success = EasyQ.Convert2EasyQ(filters, outputFilePath);
+								break;
+							case  2: // FabFilter Pro-Q
+								Debug.Assert(listBoxPluginSelection.SelectedItem.ToString().ToLower().Contains("fabfilter"));
+								outputFilePath += ".ffp";
+								success = FabfilterProQ.Convert2FabfilterProQ(filters, outputFilePath);
+								break;
+							case -1: // No plugin selected
+								MessageBox.Show(new Form() { WindowState = FormWindowState.Maximized, TopMost = true },
+								                "Please select a plugin !",
+												"Error",
+												MessageBoxButtons.OK,
+												MessageBoxIcon.Exclamation,
+												MessageBoxDefaultButton.Button1);
+								break;
+							default:
+								break;
 						}
+					}
+					
+					if(success) {
+						MessageBox.Show(new Form() { WindowState = FormWindowState.Maximized, TopMost = true },
+						                listBoxPluginSelection.SelectedItem.ToString() + " file generated (" + filters.Count + " filters)",
+										"Success",
+										MessageBoxButtons.OK,
+										MessageBoxIcon.Information,
+										MessageBoxDefaultButton.Button1);
+					}
+					else if(listBoxPluginSelection.SelectedIndex != -1) {
+						MessageBox.Show(new Form() { WindowState = FormWindowState.Maximized, TopMost = true },
+								                listBoxPluginSelection.SelectedItem.ToString() + " file not generated",
+												"Error",
+												MessageBoxButtons.OK,
+												MessageBoxIcon.Error,
+												MessageBoxDefaultButton.Button1);
+								break;
 					}
 				}
 			}
